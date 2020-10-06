@@ -42,7 +42,7 @@ class TheGraph:
 				if (currMin < min):
 					min = currMin;
 					selectedKey = key;
-			print("\nThe cloest path is: ")
+			print("\nThe closest path is: ")
 			print(self.pathColl.get(selectedKey))
 			print("At delay of " + str(selectedKey))
 				
