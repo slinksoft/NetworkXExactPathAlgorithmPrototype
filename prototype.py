@@ -35,8 +35,8 @@ class TheGraph:
 			self._DFS(curr_delay, total_delay, start, end, [])
 
 			# analyze all paths in collection for the closest path to specified delay
-			min = 50;
-			selectedKey = 0;
+			min = 50
+			selectedKey = 0
 			for key in self.pathColl:
 				currMin = abs(total_delay - key)
 				if (currMin < min):
@@ -45,8 +45,6 @@ class TheGraph:
 			print("\nThe closest path is: ")
 			print(self.pathColl.get(selectedKey))
 			print("At delay of " + str(selectedKey))
-				
-
 
 	def _DFS(self, cDelay, tDelay, curr, target, path):
 			if (curr == target):
@@ -74,4 +72,13 @@ class TheGraph:
 if __name__=="__main__":
 	G = TheGraph()
 	delay = 29; # desired delay
+	print("Graph Nodes:")
+	for node in G.get_nodes():
+		print(node)
+	print("\nGraph Edges:")
+	for edge in G.get_edges():
+		print(edge)
+	nx.draw_networkx(G.graph)
+	plt.savefig("graph.png")
+	print("Drew graph. Saved to graph.png.\n\n")
 	G.DFS(curr_delay=delay, total_delay=delay, start="UserA", end="UserB")
