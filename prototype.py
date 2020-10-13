@@ -59,7 +59,7 @@ class TheGraph:
 						self.pathColl[tDelay+abs(cDelay)] = path.copy()
 						return
 					elif (cDelay >= 0):
-						self.pathColl[tDelay-cDelay] = path.copy();
+						self.pathColl[tDelay-cDelay] = path.copy()
 						return
 			elif (cDelay <= 0):
 				return
