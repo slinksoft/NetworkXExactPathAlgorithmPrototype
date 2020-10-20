@@ -12,7 +12,8 @@ class MyGraph:
                 ('S6', 'User2', {'delay': 84}), ('S5', 'User2', {'delay': 29})]
         self.graph.add_edges_from(edges)
         self._result = {}
-        self._visit_limit = 2
+        self._visit_limit = 1
+        self._tDelay = 0;
 
     def get_nodes(self):
         return self.graph.nodes
@@ -23,6 +24,7 @@ class MyGraph:
     def DFS(self, total_delay, start, end):
         '''Obtain paths with total delays equal or close to the user's requirements.'''
         visits = {}
+        self._tDelay = total_delay
         for node in G.get_nodes():
             visits[str(node)] = 0
 
@@ -35,7 +37,10 @@ class MyGraph:
         if (curr == target and path != []):
             error = abs(delay) # The target was reached
             if not bool(self._result) or error < self._result["error"]:
-                self._result = {"path":path.copy(), "error":error}
+                if (delay >= 0):
+                    self._result = {"path":path.copy(), "error":error, "delay at": self._tDelay-error }
+                else:
+                    self._result = {"path":path.copy(), "error":error, "delay at": self._tDelay+error }
             return
         for neighbor in list(self.graph.neighbors(curr)):
             if (visits[str(neighbor)] < self._visit_limit):
@@ -54,6 +59,6 @@ if __name__=="__main__":
     for edge in G.get_edges().data():
         print (edge)
 
-    result = G.DFS(total_delay=60, start="User1", end="User2")
+    result = G.DFS(total_delay=64, start="User1", end="User2")
     print("\nThe closest matching path is: ")
     print(f"| {result}")
