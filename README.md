@@ -7,3 +7,11 @@ The code contains Marvin's depth-first search algorithm and my extension to coll
 Check out Marvin's Github repo (he developed the algorithm):
 
 https://github.com/MarvinTorres/PathExactDelayPrototype
+
+
+NOTE: Every prototype added includes different implementations and improvements from its previous versions. The following is the current progression (early to latest):
+
+1. prototype-rangeextension.py
+2. prototype.py
+3. improvedPrototype.py
+4. prototypeImprovedWithDavidsChanges.py
